@@ -13,6 +13,13 @@ export async function activate(context: vscode.ExtensionContext) {
     statusBarItem.tooltip = 'XAML Extension for Visual Studio Code';
     statusBarItem.show();
 
+    // Register the command
+    context.subscriptions.push(
+        vscode.commands.registerCommand('xamelot.helloWorld', () => {
+            vscode.window.showInformationMessage('Hello, Xamelot!');
+        })
+    );
+
     // Läs och parse xsd-filen
     const xsdPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.xsd').fsPath;
     console.log('XSD Path:', xsdPath);
