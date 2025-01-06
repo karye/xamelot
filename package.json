@@ -12,14 +12,11 @@
     ],
     "main": "./out/extension.js",
     "icon": "images/xml.png",
-    "activationEvents": [
-        "onLanguage:xaml",
-        "onCommand:xamelot.refresh"
-    ],
+
     "contributes": {
         "commands": [
             {
-                "command": "xamelot.Refresh",
+                "command": "xamelot.refresh",
                 "title": "Refresh XAML completions"
             }
         ],

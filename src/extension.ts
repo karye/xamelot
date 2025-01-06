@@ -15,7 +15,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
     // Register the command
     context.subscriptions.push(
-        vscode.commands.registerCommand('xamelot.helloWorld', () => {
+        vscode.commands.registerCommand('xamelot.refresh', () => {
             vscode.window.showInformationMessage('Hello, Xamelot!');
         })
     );
