@@ -1,0 +1,66 @@
+{
+    "name": "xamelot",
+    "displayName": "Xamelot",
+    "description": "XAML completion",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.96.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Linters"
+    ],
+    "icon": "images/xml.png",
+    "activationEvents": [
+        "onLanguage:xaml",
+        "onCommand:xamelot.refresh"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "xaml",
+                "extensions": [
+                    ".xaml"
+                ],
+                "aliases": [
+                    "XAML"
+                ]
+            }
+        ],
+        "grammars": [
+            {
+                "language": "xaml",
+                "scopeName": "source.xaml",
+                "path": "./syntaxes/xaml.tmLanguage.json"
+            }
+        ]
+    },
+    "keywords": [
+        "xaml",
+        "avalonia",
+        "wpf"
+    ],
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.10",
+        "@types/node": "20.x",
+        "@types/vscode": "^1.96.0",
+        "@types/xml2js": "^0.4.14",
+        "@typescript-eslint/eslint-plugin": "^8.17.0",
+        "@typescript-eslint/parser": "^8.17.0",
+        "@vscode/test-cli": "^0.0.10",
+        "@vscode/test-electron": "^2.4.1",
+        "eslint": "^9.16.0",
+        "typescript": "^5.7.2"
+    },
+    "dependencies": {
+        "xml2js": "^0.6.2"
+    }
+}
