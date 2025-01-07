@@ -6,7 +6,11 @@ let xamlSchema: any;
 
 export async function activate(context: vscode.ExtensionContext) {
     console.log('Activating extension Xamelot...');
-
+    const xsdPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.xsd');
+    const grammarPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.tmLanguage.json');
+    console.log('XSD Path:', xsdPath);
+    console.log('Grammar Path:', grammarPath);
+    
     // Add text in status bar
     const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
     statusBarItem.text = 'Xamelot';
@@ -21,23 +25,21 @@ export async function activate(context: vscode.ExtensionContext) {
     );
 
     // Läs och parse xsd-filen
-    const xsdPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.xsd').fsPath;
-    console.log('XSD Path:', xsdPath);
     try {
-        xamlSchema = await parseXSD(xsdPath);
+        xamlSchema = await parseXSD(xsdPath.fsPath);
         console.log('XAML Schema:', xamlSchema);
     } catch (error) {
         console.error('Error parsing XSD:', error);
     }
 
     // Generera tmLanguage-fil
-    const grammarPath = context.extensionPath + '/syntax/xaml.tmLanguage.json';
     try {
-        await createGrammarFile(xamlSchema, grammarPath);
+        await createGrammarFile(xamlSchema, grammarPath.fsPath);
     } catch (error) {
         console.error('Error creating grammar file:', error);
     }
 
+    // Register the completion provider
     context.subscriptions.push(
         vscode.languages.registerCompletionItemProvider(
             { language: 'xaml' },
@@ -51,12 +53,13 @@ export async function activate(context: vscode.ExtensionContext) {
         for (const change of changes) {
             if (change.text === '>') {
                 const line = event.document.lineAt(change.range.start.line).text;
-                const tagNameMatch = line.match(/<(\w+)/);
+                const tagNameMatch = line.match(/<(\w+)(\s|>)/);
                 if (tagNameMatch) {
                     const tagName = tagNameMatch[1];
                     const closingTag = `</${tagName}>`;
                     const edit = new vscode.WorkspaceEdit();
-                    edit.insert(event.document.uri, change.range.end, closingTag);
+                    const position = new vscode.Position(change.range.start.line, change.range.end.character + 1);
+                    edit.insert(event.document.uri, position, closingTag);
                     vscode.workspace.applyEdit(edit);
                     console.log('Inserted closing tag:', closingTag);
                 }
@@ -71,14 +74,17 @@ class XamlCompletionProvider implements vscode.CompletionItemProvider {
     constructor(private schema: any) { }
 
     provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-        const line = document.lineAt(position).text.substring(0, position.character);
+        const line = document.lineAt(position).text.substring(0, position.character).trim();
         console.log('Providing completion items for line:', line);
 
-        if (line.endsWith('<')) {
+        if (line.startsWith('<')) {
+            console.log('Detected "<", providing element completions');
             return this.getElements();
         } else if (line.match(/<\w+\s+\w*$/)) {
+            console.log('Detected element with attributes, providing attribute completions');
             return this.getAttributes(line);
         } else if (line.match(/<\w+\s+\w+=".*$/)) {
+            console.log('Detected attribute value, providing closing tag completions');
             return this.getClosingTag(line);
         }
 
@@ -88,7 +94,9 @@ class XamlCompletionProvider implements vscode.CompletionItemProvider {
     private getElements() {
         console.log('Getting elements...');
         const items = Object.keys(this.schema.elements).map(key => {
-            return new vscode.CompletionItem(key, vscode.CompletionItemKind.Class);
+            const item = new vscode.CompletionItem(key, vscode.CompletionItemKind.Class);
+            console.log('Created completion item:', item);
+            return item;
         });
         return items;
     }
@@ -97,16 +105,21 @@ class XamlCompletionProvider implements vscode.CompletionItemProvider {
         console.log('Getting attributes for line:', line);
         const elementName = line.match(/<(\w+)/)?.[1];
         const attributes = elementName ? this.schema.elements[elementName]?.attributes || [] : [];
-        return attributes.map((attr: string) => new vscode.CompletionItem(attr, vscode.CompletionItemKind.Property));
+        const items = attributes.map((attr: string) => {
+            const item = new vscode.CompletionItem(attr, vscode.CompletionItemKind.Property);
+            console.log('Created completion item:', item);
+            return item;
+        });
+        return items;
     }
 
     private getClosingTag(line: string) {
         console.log('Getting closing tag for line:', line);
         const elementName = line.match(/<(\w+)/)?.[1];
         if (elementName) {
-            return [
-                new vscode.CompletionItem(`</${elementName}>`, vscode.CompletionItemKind.Snippet)
-            ];
+            const item = new vscode.CompletionItem(`</${elementName}>`, vscode.CompletionItemKind.Snippet);
+            console.log('Created completion item:', item);
+            return [item];
         }
         return [];
     }

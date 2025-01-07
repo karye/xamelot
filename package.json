@@ -13,6 +13,11 @@
     "main": "./out/extension.js",
     "icon": "images/xml.png",
 
+    "activationEvents": [
+        "onLanguage:xaml",
+        "onCommand:xamelot.refresh"
+    ],
+
     "contributes": {
         "commands": [
             {
@@ -45,12 +50,13 @@
         "wpf"
     ],
     "scripts": {
-        "vscode:prepublish": "npm run compile",
+        "vscode:prepublish": "npm run compile && npm run copy-files",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
         "lint": "eslint src",
-        "test": "vscode-test"
+        "test": "vscode-test",
+        "copy-files": "cp -r src/syntax out/syntax"
     },
     "devDependencies": {
         "@types/mocha": "^10.0.10",
@@ -66,5 +72,8 @@
     },
     "dependencies": {
         "xml2js": "^0.6.2"
-    }
+    },
+    "extensionDependencies": [
+        "redhat.vscode-xml"
+    ]
 }
