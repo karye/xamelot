@@ -14,8 +14,7 @@
     "icon": "images/xml.png",
 
     "activationEvents": [
-        "onLanguage:xaml",
-        "onCommand:xamelot.refresh"
+        "onLanguage:xaml"
     ],
 
     "contributes": {

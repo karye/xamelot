@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
-import { parseXSD } from './xsdparser'; // Funktion för att parsa xsd-filen
-import { generateGrammarFromXSD } from './xsdparser';
+import { parseXSD, generateGrammarFromXSD } from './xsdparser'; // Funktion för att parsa xsd-filen och generera grammatik
 
 let xamlSchema: any;
 
@@ -8,28 +7,30 @@ export async function activate(context: vscode.ExtensionContext) {
     console.log('Activating extension Xamelot...');
     const xsdPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.xsd');
     const grammarPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.tmLanguage.json');
-    console.log('XSD Path:', xsdPath);
-    console.log('Grammar Path:', grammarPath);
-    
-    // Add text in status bar
+    console.log('XSD Path:', xsdPath.fsPath);
+    console.log('Grammar Path:', grammarPath.fsPath);
+
+    // Lägg till statusfält
     const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
     statusBarItem.text = 'Xamelot';
     statusBarItem.tooltip = 'XAML Extension for Visual Studio Code';
     statusBarItem.show();
+    context.subscriptions.push(statusBarItem);
 
-    // Register the command
+    // Registrera ett kommando
     context.subscriptions.push(
         vscode.commands.registerCommand('xamelot.refresh', () => {
-            vscode.window.showInformationMessage('Hello, Xamelot!');
+            vscode.window.showInformationMessage('Xamelot refreshed!');
         })
     );
 
-    // Läs och parse xsd-filen
+    // Läs och parse XSD-filen
     try {
         xamlSchema = await parseXSD(xsdPath.fsPath);
-        console.log('XAML Schema:', xamlSchema);
+        console.log('XAML Schema loaded successfully:', xamlSchema);
     } catch (error) {
         console.error('Error parsing XSD:', error);
+        return; // Avbryt aktiveringen om parsing misslyckas
     }
 
     // Generera tmLanguage-fil
@@ -37,9 +38,10 @@ export async function activate(context: vscode.ExtensionContext) {
         await createGrammarFile(xamlSchema, grammarPath.fsPath);
     } catch (error) {
         console.error('Error creating grammar file:', error);
+        return; // Avbryt aktiveringen om grammar-filen inte kan skapas
     }
 
-    // Register the completion provider
+    // Registrera completion provider
     context.subscriptions.push(
         vscode.languages.registerCompletionItemProvider(
             { language: 'xaml' },
@@ -48,6 +50,7 @@ export async function activate(context: vscode.ExtensionContext) {
         )
     );
 
+    // Hantera automatisk stängning av taggar
     vscode.workspace.onDidChangeTextDocument(event => {
         const changes = event.contentChanges;
         for (const change of changes) {
@@ -58,7 +61,7 @@ export async function activate(context: vscode.ExtensionContext) {
                     const tagName = tagNameMatch[1];
                     const closingTag = `</${tagName}>`;
                     const edit = new vscode.WorkspaceEdit();
-                    const position = new vscode.Position(change.range.start.line, change.range.end.character + 1);
+                    const position = new vscode.Position(change.range.start.line, change.range.end.character);
                     edit.insert(event.document.uri, position, closingTag);
                     vscode.workspace.applyEdit(edit);
                     console.log('Inserted closing tag:', closingTag);
@@ -78,13 +81,10 @@ class XamlCompletionProvider implements vscode.CompletionItemProvider {
         console.log('Providing completion items for line:', line);
 
         if (line.startsWith('<')) {
-            console.log('Detected "<", providing element completions');
             return this.getElements();
         } else if (line.match(/<\w+\s+\w*$/)) {
-            console.log('Detected element with attributes, providing attribute completions');
             return this.getAttributes(line);
         } else if (line.match(/<\w+\s+\w+=".*$/)) {
-            console.log('Detected attribute value, providing closing tag completions');
             return this.getClosingTag(line);
         }
 
@@ -92,34 +92,37 @@ class XamlCompletionProvider implements vscode.CompletionItemProvider {
     }
 
     private getElements() {
-        console.log('Getting elements...');
+        if (!this.schema || !this.schema.elements) {
+            console.warn('No elements found in schema');
+            return [];
+        }
+
         const items = Object.keys(this.schema.elements).map(key => {
             const item = new vscode.CompletionItem(key, vscode.CompletionItemKind.Class);
-            console.log('Created completion item:', item);
             return item;
         });
         return items;
     }
 
     private getAttributes(line: string) {
-        console.log('Getting attributes for line:', line);
         const elementName = line.match(/<(\w+)/)?.[1];
-        const attributes = elementName ? this.schema.elements[elementName]?.attributes || [] : [];
-        const items = attributes.map((attr: string) => {
+        if (!elementName) {
+            console.warn('No element name found in line:', line);
+            return [];
+        }
+
+        const attributes = this.schema.elements[elementName]?.attributes || {};
+        return Object.keys(attributes).map(attr => {
             const item = new vscode.CompletionItem(attr, vscode.CompletionItemKind.Property);
-            console.log('Created completion item:', item);
+            item.documentation = attributes[attr];
             return item;
         });
-        return items;
     }
 
     private getClosingTag(line: string) {
-        console.log('Getting closing tag for line:', line);
         const elementName = line.match(/<(\w+)/)?.[1];
         if (elementName) {
-            const item = new vscode.CompletionItem(`</${elementName}>`, vscode.CompletionItemKind.Snippet);
-            console.log('Created completion item:', item);
-            return [item];
+            return [new vscode.CompletionItem(`</${elementName}>`, vscode.CompletionItemKind.Snippet)];
         }
         return [];
     }

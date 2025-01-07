@@ -1,64 +1,119 @@
 import * as fs from 'fs';
 import * as xml2js from 'xml2js';
 
-export async function parseXSD(filePath: string) {
+interface SchemaElement {
+  attributes: { [key: string]: string };
+  childElements: string[];
+}
+
+interface Schema {
+  elements: { [key: string]: SchemaElement };
+}
+
+export async function parseXSD(filePath: string): Promise<Schema> {
   const xsdContent = fs.readFileSync(filePath, 'utf-8');
-  const parser = new xml2js.Parser();
+  const parser = new xml2js.Parser({ explicitArray: false, mergeAttrs: true });
   const result = await parser.parseStringPromise(xsdContent);
-  console.log('Parsed XSD Result:', result);
 
-  const schema: { elements: { [key: string]: { attributes: string[], childElements: string[] } } } = { elements: {} };
+  const schema: Schema = { elements: {} };
 
-  // Kontrollera om schema och complexType-egenskapen finns
-  if (result['xs:schema']) {
-    const schemaElements = result['xs:schema']['xs:element'] || [];
-    schemaElements.forEach((element: any) => {
-      const elementName = element.$.name;
-      const type = element.$.type;
-      const complexType = result['xs:schema']['xs:complexType'].find((ct: any) => ct.$.name === type);
-      const attributes = complexType ? complexType['xs:attribute'] || [] : [];
-      schema.elements[elementName] = {
-        attributes: attributes.map((attr: any) => attr.$.name),
-        childElements: []
-      };
-    });
-  } else {
-    console.warn('No schema found in the XSD file.');
+  const addElement = (element: any, baseType: string = '') => {
+    const name = element.name || element.$?.name;
+    if (!name) {
+      return;
+    }
+
+    const attributes: { [key: string]: string } = {};
+    const childElements = [];
+
+    // Lägg till attribut från elementet
+    if (element["xs:attribute"]) {
+      const attrArray = Array.isArray(element["xs:attribute"]) ? element["xs:attribute"] : [element["xs:attribute"]];
+      for (const attr of attrArray) {
+        const attrName = attr.name || attr.$?.name;
+        const documentation = attr["xs:annotation"]?.["xs:documentation"] || "";
+        attributes[attrName] = documentation;
+      }
+    }
+
+    // Hämta barns element från xs:group eller xs:choice
+    if (element["xs:complexType"]?.["xs:choice"]?.["xs:element"]) {
+      const childArray = Array.isArray(element["xs:complexType"]["xs:choice"]["xs:element"])
+        ? element["xs:complexType"]["xs:choice"]["xs:element"]
+        : [element["xs:complexType"]["xs:choice"]["xs:element"]];
+      for (const child of childArray) {
+        if (child.ref) {
+          childElements.push(child.ref);
+        }
+      }
+    }
+
+    // Hantera baserade typer från xs:extension
+    if (element["xs:complexType"]?.["xs:complexContent"]?.["xs:extension"]) {
+      const base = element["xs:complexType"]["xs:complexContent"]["xs:extension"].base;
+      if (base && schema.elements[base]) {
+        Object.assign(attributes, schema.elements[base].attributes);
+        childElements.push(...schema.elements[base].childElements);
+      }
+    }
+
+    schema.elements[name] = {
+      attributes,
+      childElements
+    };
+  };
+
+  // Hämta alla xs:element i schemat
+  const elements = result["xs:schema"]["xs:element"];
+  if (Array.isArray(elements)) {
+    for (const el of elements) {
+      addElement(el);
+    }
+  } else if (elements) {
+    addElement(elements);
   }
-  
-  console.log('Parsed schema:', schema);
+
+  // Hantera xs:group (som "controls")
+  const groups = result["xs:schema"]["xs:group"];
+  if (groups) {
+    const groupArray = Array.isArray(groups) ? groups : [groups];
+    for (const group of groupArray) {
+      if (group.name === "controls" && group["xs:choice"]?.["xs:element"]) {
+        const childArray = Array.isArray(group["xs:choice"]["xs:element"])
+          ? group["xs:choice"]["xs:element"]
+          : [group["xs:choice"]["xs:element"]];
+        for (const child of childArray) {
+          if (child.ref) {
+            schema.elements[child.ref] = schema.elements[child.ref] || { attributes: {}, childElements: [] };
+          }
+        }
+      }
+    }
+  }
+
   return schema;
 }
 
-export function generateGrammarFromXSD(schema: any): any {
-  const patterns: any[] = [];
-
-  // Kontrollera om elements-egenskapen finns
-  if (schema.elements) {
-    // Lägg till regler för element
-    for (const elementName in schema.elements) {
-      patterns.push({
-        name: `entity.name.tag.xaml`,
-        match: `<${elementName}`
-      });
-    }
-
-    // Lägg till regler för attribut
-    for (const elementName in schema.elements) {
-      for (const attributeName of schema.elements[elementName].attributes) {
-        patterns.push({
-          name: `variable.parameter.attribute.xaml`,
-          match: `\\b${attributeName}=`
-        });
-      }
-    }
-  } else {
-    console.warn('No elements found in the schema.');
-  }
-
-  return {
-    scopeName: "source.xaml",
-    patterns: patterns,
+export function generateGrammarFromXSD(schema: Schema): any {
+  const grammar: {
+    scopeName: string;
+    patterns: any[];
+    repository: { [key: string]: any };
+  } = {
+    scopeName: 'source.xaml',
+    patterns: [],
     repository: {}
   };
+
+  for (const elementName in schema.elements) {
+    const element = schema.elements[elementName];
+    grammar.repository[elementName] = {
+      name: `entity.name.tag.xaml.${elementName}`,
+      begin: `<${elementName}(\\s|>)`,
+      end: `</${elementName}>`,
+      patterns: element.childElements.map(child => ({ include: `#${child}` }))
+    };
+  }
+
+  return grammar;
 }

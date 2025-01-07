@@ -1,474 +1,708 @@
 {
   "scopeName": "source.xaml",
-  "patterns": [
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Window"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Ellipse"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Line"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Path"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Polygon"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Polyline"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Rectangle"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ActiveXHost"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<NavigationWindow"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<AdornerDecorator"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<AdornerLayer"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DocumentReference"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<FixedPage"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Glyphs"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<PageContent"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<StickyNoteControl"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<AccessText"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<AdornedElementPlaceholder"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Border"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Button"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Calendar"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Canvas"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<CheckBox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ComboBox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ComboBoxItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ContentControl"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ContentPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ContextMenu"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Control"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGrid"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridCell"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridCellsPanel"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridRow"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DatePicker"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Decorator"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DockPanel"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DocumentViewer"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Expander"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<FlowDocumentReader"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<FlowDocumentScrollViewer"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Frame"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Grid"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<GridSplitter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<GridViewColumnHeader"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<GridViewHeaderRowPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<GridViewRowPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<GroupBox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<GroupItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<HeaderedContentControl"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<HeaderedItemsControl"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Image"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<InkCanvas"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<InkPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ItemsControl"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ItemsPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Label"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ListBox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ListBoxItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ListView"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ListViewItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<MediaElement"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Menu"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<MenuItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Page"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<PasswordBox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ScrollContentPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ProgressBar"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<RadioButton"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<RichTextBox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ScrollViewer"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Separator"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<FlowDocumentPageViewer"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Slider"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<StackPanel"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<TabControl"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<TabItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<TextBlock"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<TextBox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ToolBar"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ToolBarTray"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ToolTip"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<TreeView"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<TreeViewItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<UserControl"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Viewbox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Viewport3D"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<VirtualizingStackPanel"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<WebBrowser"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<WrapPanel"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<BulletDecorator"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<CalendarButton"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<CalendarDayButton"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<CalendarItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridCellsPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridColumnHeader"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridColumnHeadersPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridDetailsPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridRowHeader"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DataGridRowsPresenter"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DatePickerTextBox"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<DocumentPageView"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Popup"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<RepeatButton"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ResizeGrip"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ScrollBar"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<SelectiveScrollingGrid"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<StatusBar"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<StatusBarItem"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<TabPanel"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Thumb"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<TickBar"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ToggleButton"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ToolBarOverflowPanel"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<ToolBarPanel"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Track"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<UniformGrid"
-    },
-    {
-      "name": "entity.name.tag.xaml",
-      "match": "<Style"
+  "patterns": [],
+  "repository": {
+    "Window": {
+      "name": "entity.name.tag.xaml.Window",
+      "begin": "<Window(\\s|>)",
+      "end": "</Window>",
+      "patterns": []
+    },
+    "Ellipse": {
+      "name": "entity.name.tag.xaml.Ellipse",
+      "begin": "<Ellipse(\\s|>)",
+      "end": "</Ellipse>",
+      "patterns": []
+    },
+    "Line": {
+      "name": "entity.name.tag.xaml.Line",
+      "begin": "<Line(\\s|>)",
+      "end": "</Line>",
+      "patterns": []
+    },
+    "Path": {
+      "name": "entity.name.tag.xaml.Path",
+      "begin": "<Path(\\s|>)",
+      "end": "</Path>",
+      "patterns": []
+    },
+    "Polygon": {
+      "name": "entity.name.tag.xaml.Polygon",
+      "begin": "<Polygon(\\s|>)",
+      "end": "</Polygon>",
+      "patterns": []
+    },
+    "Polyline": {
+      "name": "entity.name.tag.xaml.Polyline",
+      "begin": "<Polyline(\\s|>)",
+      "end": "</Polyline>",
+      "patterns": []
+    },
+    "Rectangle": {
+      "name": "entity.name.tag.xaml.Rectangle",
+      "begin": "<Rectangle(\\s|>)",
+      "end": "</Rectangle>",
+      "patterns": []
+    },
+    "ActiveXHost": {
+      "name": "entity.name.tag.xaml.ActiveXHost",
+      "begin": "<ActiveXHost(\\s|>)",
+      "end": "</ActiveXHost>",
+      "patterns": []
+    },
+    "NavigationWindow": {
+      "name": "entity.name.tag.xaml.NavigationWindow",
+      "begin": "<NavigationWindow(\\s|>)",
+      "end": "</NavigationWindow>",
+      "patterns": []
+    },
+    "AdornerDecorator": {
+      "name": "entity.name.tag.xaml.AdornerDecorator",
+      "begin": "<AdornerDecorator(\\s|>)",
+      "end": "</AdornerDecorator>",
+      "patterns": []
+    },
+    "AdornerLayer": {
+      "name": "entity.name.tag.xaml.AdornerLayer",
+      "begin": "<AdornerLayer(\\s|>)",
+      "end": "</AdornerLayer>",
+      "patterns": []
+    },
+    "DocumentReference": {
+      "name": "entity.name.tag.xaml.DocumentReference",
+      "begin": "<DocumentReference(\\s|>)",
+      "end": "</DocumentReference>",
+      "patterns": []
+    },
+    "FixedPage": {
+      "name": "entity.name.tag.xaml.FixedPage",
+      "begin": "<FixedPage(\\s|>)",
+      "end": "</FixedPage>",
+      "patterns": []
+    },
+    "Glyphs": {
+      "name": "entity.name.tag.xaml.Glyphs",
+      "begin": "<Glyphs(\\s|>)",
+      "end": "</Glyphs>",
+      "patterns": []
+    },
+    "PageContent": {
+      "name": "entity.name.tag.xaml.PageContent",
+      "begin": "<PageContent(\\s|>)",
+      "end": "</PageContent>",
+      "patterns": []
+    },
+    "StickyNoteControl": {
+      "name": "entity.name.tag.xaml.StickyNoteControl",
+      "begin": "<StickyNoteControl(\\s|>)",
+      "end": "</StickyNoteControl>",
+      "patterns": []
+    },
+    "AccessText": {
+      "name": "entity.name.tag.xaml.AccessText",
+      "begin": "<AccessText(\\s|>)",
+      "end": "</AccessText>",
+      "patterns": []
+    },
+    "AdornedElementPlaceholder": {
+      "name": "entity.name.tag.xaml.AdornedElementPlaceholder",
+      "begin": "<AdornedElementPlaceholder(\\s|>)",
+      "end": "</AdornedElementPlaceholder>",
+      "patterns": []
+    },
+    "Border": {
+      "name": "entity.name.tag.xaml.Border",
+      "begin": "<Border(\\s|>)",
+      "end": "</Border>",
+      "patterns": []
+    },
+    "Button": {
+      "name": "entity.name.tag.xaml.Button",
+      "begin": "<Button(\\s|>)",
+      "end": "</Button>",
+      "patterns": []
+    },
+    "Calendar": {
+      "name": "entity.name.tag.xaml.Calendar",
+      "begin": "<Calendar(\\s|>)",
+      "end": "</Calendar>",
+      "patterns": []
+    },
+    "Canvas": {
+      "name": "entity.name.tag.xaml.Canvas",
+      "begin": "<Canvas(\\s|>)",
+      "end": "</Canvas>",
+      "patterns": []
+    },
+    "CheckBox": {
+      "name": "entity.name.tag.xaml.CheckBox",
+      "begin": "<CheckBox(\\s|>)",
+      "end": "</CheckBox>",
+      "patterns": []
+    },
+    "ComboBox": {
+      "name": "entity.name.tag.xaml.ComboBox",
+      "begin": "<ComboBox(\\s|>)",
+      "end": "</ComboBox>",
+      "patterns": []
+    },
+    "ComboBoxItem": {
+      "name": "entity.name.tag.xaml.ComboBoxItem",
+      "begin": "<ComboBoxItem(\\s|>)",
+      "end": "</ComboBoxItem>",
+      "patterns": []
+    },
+    "ContentControl": {
+      "name": "entity.name.tag.xaml.ContentControl",
+      "begin": "<ContentControl(\\s|>)",
+      "end": "</ContentControl>",
+      "patterns": []
+    },
+    "ContentPresenter": {
+      "name": "entity.name.tag.xaml.ContentPresenter",
+      "begin": "<ContentPresenter(\\s|>)",
+      "end": "</ContentPresenter>",
+      "patterns": []
+    },
+    "ContextMenu": {
+      "name": "entity.name.tag.xaml.ContextMenu",
+      "begin": "<ContextMenu(\\s|>)",
+      "end": "</ContextMenu>",
+      "patterns": []
+    },
+    "Control": {
+      "name": "entity.name.tag.xaml.Control",
+      "begin": "<Control(\\s|>)",
+      "end": "</Control>",
+      "patterns": []
+    },
+    "DataGrid": {
+      "name": "entity.name.tag.xaml.DataGrid",
+      "begin": "<DataGrid(\\s|>)",
+      "end": "</DataGrid>",
+      "patterns": []
+    },
+    "DataGridCell": {
+      "name": "entity.name.tag.xaml.DataGridCell",
+      "begin": "<DataGridCell(\\s|>)",
+      "end": "</DataGridCell>",
+      "patterns": []
+    },
+    "DataGridCellsPanel": {
+      "name": "entity.name.tag.xaml.DataGridCellsPanel",
+      "begin": "<DataGridCellsPanel(\\s|>)",
+      "end": "</DataGridCellsPanel>",
+      "patterns": []
+    },
+    "DataGridRow": {
+      "name": "entity.name.tag.xaml.DataGridRow",
+      "begin": "<DataGridRow(\\s|>)",
+      "end": "</DataGridRow>",
+      "patterns": []
+    },
+    "DatePicker": {
+      "name": "entity.name.tag.xaml.DatePicker",
+      "begin": "<DatePicker(\\s|>)",
+      "end": "</DatePicker>",
+      "patterns": []
+    },
+    "Decorator": {
+      "name": "entity.name.tag.xaml.Decorator",
+      "begin": "<Decorator(\\s|>)",
+      "end": "</Decorator>",
+      "patterns": []
+    },
+    "DockPanel": {
+      "name": "entity.name.tag.xaml.DockPanel",
+      "begin": "<DockPanel(\\s|>)",
+      "end": "</DockPanel>",
+      "patterns": []
+    },
+    "DocumentViewer": {
+      "name": "entity.name.tag.xaml.DocumentViewer",
+      "begin": "<DocumentViewer(\\s|>)",
+      "end": "</DocumentViewer>",
+      "patterns": []
+    },
+    "Expander": {
+      "name": "entity.name.tag.xaml.Expander",
+      "begin": "<Expander(\\s|>)",
+      "end": "</Expander>",
+      "patterns": []
+    },
+    "FlowDocumentReader": {
+      "name": "entity.name.tag.xaml.FlowDocumentReader",
+      "begin": "<FlowDocumentReader(\\s|>)",
+      "end": "</FlowDocumentReader>",
+      "patterns": []
+    },
+    "FlowDocumentScrollViewer": {
+      "name": "entity.name.tag.xaml.FlowDocumentScrollViewer",
+      "begin": "<FlowDocumentScrollViewer(\\s|>)",
+      "end": "</FlowDocumentScrollViewer>",
+      "patterns": []
+    },
+    "Frame": {
+      "name": "entity.name.tag.xaml.Frame",
+      "begin": "<Frame(\\s|>)",
+      "end": "</Frame>",
+      "patterns": []
+    },
+    "Grid": {
+      "name": "entity.name.tag.xaml.Grid",
+      "begin": "<Grid(\\s|>)",
+      "end": "</Grid>",
+      "patterns": []
+    },
+    "GridSplitter": {
+      "name": "entity.name.tag.xaml.GridSplitter",
+      "begin": "<GridSplitter(\\s|>)",
+      "end": "</GridSplitter>",
+      "patterns": []
+    },
+    "GridViewColumnHeader": {
+      "name": "entity.name.tag.xaml.GridViewColumnHeader",
+      "begin": "<GridViewColumnHeader(\\s|>)",
+      "end": "</GridViewColumnHeader>",
+      "patterns": []
+    },
+    "GridViewHeaderRowPresenter": {
+      "name": "entity.name.tag.xaml.GridViewHeaderRowPresenter",
+      "begin": "<GridViewHeaderRowPresenter(\\s|>)",
+      "end": "</GridViewHeaderRowPresenter>",
+      "patterns": []
+    },
+    "GridViewRowPresenter": {
+      "name": "entity.name.tag.xaml.GridViewRowPresenter",
+      "begin": "<GridViewRowPresenter(\\s|>)",
+      "end": "</GridViewRowPresenter>",
+      "patterns": []
+    },
+    "GroupBox": {
+      "name": "entity.name.tag.xaml.GroupBox",
+      "begin": "<GroupBox(\\s|>)",
+      "end": "</GroupBox>",
+      "patterns": []
+    },
+    "GroupItem": {
+      "name": "entity.name.tag.xaml.GroupItem",
+      "begin": "<GroupItem(\\s|>)",
+      "end": "</GroupItem>",
+      "patterns": []
+    },
+    "HeaderedContentControl": {
+      "name": "entity.name.tag.xaml.HeaderedContentControl",
+      "begin": "<HeaderedContentControl(\\s|>)",
+      "end": "</HeaderedContentControl>",
+      "patterns": []
+    },
+    "HeaderedItemsControl": {
+      "name": "entity.name.tag.xaml.HeaderedItemsControl",
+      "begin": "<HeaderedItemsControl(\\s|>)",
+      "end": "</HeaderedItemsControl>",
+      "patterns": []
+    },
+    "Image": {
+      "name": "entity.name.tag.xaml.Image",
+      "begin": "<Image(\\s|>)",
+      "end": "</Image>",
+      "patterns": []
+    },
+    "InkCanvas": {
+      "name": "entity.name.tag.xaml.InkCanvas",
+      "begin": "<InkCanvas(\\s|>)",
+      "end": "</InkCanvas>",
+      "patterns": []
+    },
+    "InkPresenter": {
+      "name": "entity.name.tag.xaml.InkPresenter",
+      "begin": "<InkPresenter(\\s|>)",
+      "end": "</InkPresenter>",
+      "patterns": []
+    },
+    "ItemsControl": {
+      "name": "entity.name.tag.xaml.ItemsControl",
+      "begin": "<ItemsControl(\\s|>)",
+      "end": "</ItemsControl>",
+      "patterns": []
+    },
+    "ItemsPresenter": {
+      "name": "entity.name.tag.xaml.ItemsPresenter",
+      "begin": "<ItemsPresenter(\\s|>)",
+      "end": "</ItemsPresenter>",
+      "patterns": []
+    },
+    "Label": {
+      "name": "entity.name.tag.xaml.Label",
+      "begin": "<Label(\\s|>)",
+      "end": "</Label>",
+      "patterns": []
+    },
+    "ListBox": {
+      "name": "entity.name.tag.xaml.ListBox",
+      "begin": "<ListBox(\\s|>)",
+      "end": "</ListBox>",
+      "patterns": []
+    },
+    "ListBoxItem": {
+      "name": "entity.name.tag.xaml.ListBoxItem",
+      "begin": "<ListBoxItem(\\s|>)",
+      "end": "</ListBoxItem>",
+      "patterns": []
+    },
+    "ListView": {
+      "name": "entity.name.tag.xaml.ListView",
+      "begin": "<ListView(\\s|>)",
+      "end": "</ListView>",
+      "patterns": []
+    },
+    "ListViewItem": {
+      "name": "entity.name.tag.xaml.ListViewItem",
+      "begin": "<ListViewItem(\\s|>)",
+      "end": "</ListViewItem>",
+      "patterns": []
+    },
+    "MediaElement": {
+      "name": "entity.name.tag.xaml.MediaElement",
+      "begin": "<MediaElement(\\s|>)",
+      "end": "</MediaElement>",
+      "patterns": []
+    },
+    "Menu": {
+      "name": "entity.name.tag.xaml.Menu",
+      "begin": "<Menu(\\s|>)",
+      "end": "</Menu>",
+      "patterns": []
+    },
+    "MenuItem": {
+      "name": "entity.name.tag.xaml.MenuItem",
+      "begin": "<MenuItem(\\s|>)",
+      "end": "</MenuItem>",
+      "patterns": []
+    },
+    "Page": {
+      "name": "entity.name.tag.xaml.Page",
+      "begin": "<Page(\\s|>)",
+      "end": "</Page>",
+      "patterns": []
+    },
+    "PasswordBox": {
+      "name": "entity.name.tag.xaml.PasswordBox",
+      "begin": "<PasswordBox(\\s|>)",
+      "end": "</PasswordBox>",
+      "patterns": []
+    },
+    "ScrollContentPresenter": {
+      "name": "entity.name.tag.xaml.ScrollContentPresenter",
+      "begin": "<ScrollContentPresenter(\\s|>)",
+      "end": "</ScrollContentPresenter>",
+      "patterns": []
+    },
+    "ProgressBar": {
+      "name": "entity.name.tag.xaml.ProgressBar",
+      "begin": "<ProgressBar(\\s|>)",
+      "end": "</ProgressBar>",
+      "patterns": []
+    },
+    "RadioButton": {
+      "name": "entity.name.tag.xaml.RadioButton",
+      "begin": "<RadioButton(\\s|>)",
+      "end": "</RadioButton>",
+      "patterns": []
+    },
+    "RichTextBox": {
+      "name": "entity.name.tag.xaml.RichTextBox",
+      "begin": "<RichTextBox(\\s|>)",
+      "end": "</RichTextBox>",
+      "patterns": []
+    },
+    "ScrollViewer": {
+      "name": "entity.name.tag.xaml.ScrollViewer",
+      "begin": "<ScrollViewer(\\s|>)",
+      "end": "</ScrollViewer>",
+      "patterns": []
+    },
+    "Separator": {
+      "name": "entity.name.tag.xaml.Separator",
+      "begin": "<Separator(\\s|>)",
+      "end": "</Separator>",
+      "patterns": []
+    },
+    "FlowDocumentPageViewer": {
+      "name": "entity.name.tag.xaml.FlowDocumentPageViewer",
+      "begin": "<FlowDocumentPageViewer(\\s|>)",
+      "end": "</FlowDocumentPageViewer>",
+      "patterns": []
+    },
+    "Slider": {
+      "name": "entity.name.tag.xaml.Slider",
+      "begin": "<Slider(\\s|>)",
+      "end": "</Slider>",
+      "patterns": []
+    },
+    "StackPanel": {
+      "name": "entity.name.tag.xaml.StackPanel",
+      "begin": "<StackPanel(\\s|>)",
+      "end": "</StackPanel>",
+      "patterns": []
+    },
+    "TabControl": {
+      "name": "entity.name.tag.xaml.TabControl",
+      "begin": "<TabControl(\\s|>)",
+      "end": "</TabControl>",
+      "patterns": []
+    },
+    "TabItem": {
+      "name": "entity.name.tag.xaml.TabItem",
+      "begin": "<TabItem(\\s|>)",
+      "end": "</TabItem>",
+      "patterns": []
+    },
+    "TextBlock": {
+      "name": "entity.name.tag.xaml.TextBlock",
+      "begin": "<TextBlock(\\s|>)",
+      "end": "</TextBlock>",
+      "patterns": []
+    },
+    "TextBox": {
+      "name": "entity.name.tag.xaml.TextBox",
+      "begin": "<TextBox(\\s|>)",
+      "end": "</TextBox>",
+      "patterns": []
+    },
+    "ToolBar": {
+      "name": "entity.name.tag.xaml.ToolBar",
+      "begin": "<ToolBar(\\s|>)",
+      "end": "</ToolBar>",
+      "patterns": []
+    },
+    "ToolBarTray": {
+      "name": "entity.name.tag.xaml.ToolBarTray",
+      "begin": "<ToolBarTray(\\s|>)",
+      "end": "</ToolBarTray>",
+      "patterns": []
+    },
+    "ToolTip": {
+      "name": "entity.name.tag.xaml.ToolTip",
+      "begin": "<ToolTip(\\s|>)",
+      "end": "</ToolTip>",
+      "patterns": []
+    },
+    "TreeView": {
+      "name": "entity.name.tag.xaml.TreeView",
+      "begin": "<TreeView(\\s|>)",
+      "end": "</TreeView>",
+      "patterns": []
+    },
+    "TreeViewItem": {
+      "name": "entity.name.tag.xaml.TreeViewItem",
+      "begin": "<TreeViewItem(\\s|>)",
+      "end": "</TreeViewItem>",
+      "patterns": []
+    },
+    "UserControl": {
+      "name": "entity.name.tag.xaml.UserControl",
+      "begin": "<UserControl(\\s|>)",
+      "end": "</UserControl>",
+      "patterns": []
+    },
+    "Viewbox": {
+      "name": "entity.name.tag.xaml.Viewbox",
+      "begin": "<Viewbox(\\s|>)",
+      "end": "</Viewbox>",
+      "patterns": []
+    },
+    "Viewport3D": {
+      "name": "entity.name.tag.xaml.Viewport3D",
+      "begin": "<Viewport3D(\\s|>)",
+      "end": "</Viewport3D>",
+      "patterns": []
+    },
+    "VirtualizingStackPanel": {
+      "name": "entity.name.tag.xaml.VirtualizingStackPanel",
+      "begin": "<VirtualizingStackPanel(\\s|>)",
+      "end": "</VirtualizingStackPanel>",
+      "patterns": []
+    },
+    "WebBrowser": {
+      "name": "entity.name.tag.xaml.WebBrowser",
+      "begin": "<WebBrowser(\\s|>)",
+      "end": "</WebBrowser>",
+      "patterns": []
+    },
+    "WrapPanel": {
+      "name": "entity.name.tag.xaml.WrapPanel",
+      "begin": "<WrapPanel(\\s|>)",
+      "end": "</WrapPanel>",
+      "patterns": []
+    },
+    "BulletDecorator": {
+      "name": "entity.name.tag.xaml.BulletDecorator",
+      "begin": "<BulletDecorator(\\s|>)",
+      "end": "</BulletDecorator>",
+      "patterns": []
+    },
+    "CalendarButton": {
+      "name": "entity.name.tag.xaml.CalendarButton",
+      "begin": "<CalendarButton(\\s|>)",
+      "end": "</CalendarButton>",
+      "patterns": []
+    },
+    "CalendarDayButton": {
+      "name": "entity.name.tag.xaml.CalendarDayButton",
+      "begin": "<CalendarDayButton(\\s|>)",
+      "end": "</CalendarDayButton>",
+      "patterns": []
+    },
+    "CalendarItem": {
+      "name": "entity.name.tag.xaml.CalendarItem",
+      "begin": "<CalendarItem(\\s|>)",
+      "end": "</CalendarItem>",
+      "patterns": []
+    },
+    "DataGridCellsPresenter": {
+      "name": "entity.name.tag.xaml.DataGridCellsPresenter",
+      "begin": "<DataGridCellsPresenter(\\s|>)",
+      "end": "</DataGridCellsPresenter>",
+      "patterns": []
+    },
+    "DataGridColumnHeader": {
+      "name": "entity.name.tag.xaml.DataGridColumnHeader",
+      "begin": "<DataGridColumnHeader(\\s|>)",
+      "end": "</DataGridColumnHeader>",
+      "patterns": []
+    },
+    "DataGridColumnHeadersPresenter": {
+      "name": "entity.name.tag.xaml.DataGridColumnHeadersPresenter",
+      "begin": "<DataGridColumnHeadersPresenter(\\s|>)",
+      "end": "</DataGridColumnHeadersPresenter>",
+      "patterns": []
+    },
+    "DataGridDetailsPresenter": {
+      "name": "entity.name.tag.xaml.DataGridDetailsPresenter",
+      "begin": "<DataGridDetailsPresenter(\\s|>)",
+      "end": "</DataGridDetailsPresenter>",
+      "patterns": []
+    },
+    "DataGridRowHeader": {
+      "name": "entity.name.tag.xaml.DataGridRowHeader",
+      "begin": "<DataGridRowHeader(\\s|>)",
+      "end": "</DataGridRowHeader>",
+      "patterns": []
+    },
+    "DataGridRowsPresenter": {
+      "name": "entity.name.tag.xaml.DataGridRowsPresenter",
+      "begin": "<DataGridRowsPresenter(\\s|>)",
+      "end": "</DataGridRowsPresenter>",
+      "patterns": []
+    },
+    "DatePickerTextBox": {
+      "name": "entity.name.tag.xaml.DatePickerTextBox",
+      "begin": "<DatePickerTextBox(\\s|>)",
+      "end": "</DatePickerTextBox>",
+      "patterns": []
+    },
+    "DocumentPageView": {
+      "name": "entity.name.tag.xaml.DocumentPageView",
+      "begin": "<DocumentPageView(\\s|>)",
+      "end": "</DocumentPageView>",
+      "patterns": []
+    },
+    "Popup": {
+      "name": "entity.name.tag.xaml.Popup",
+      "begin": "<Popup(\\s|>)",
+      "end": "</Popup>",
+      "patterns": []
+    },
+    "RepeatButton": {
+      "name": "entity.name.tag.xaml.RepeatButton",
+      "begin": "<RepeatButton(\\s|>)",
+      "end": "</RepeatButton>",
+      "patterns": []
+    },
+    "ResizeGrip": {
+      "name": "entity.name.tag.xaml.ResizeGrip",
+      "begin": "<ResizeGrip(\\s|>)",
+      "end": "</ResizeGrip>",
+      "patterns": []
+    },
+    "ScrollBar": {
+      "name": "entity.name.tag.xaml.ScrollBar",
+      "begin": "<ScrollBar(\\s|>)",
+      "end": "</ScrollBar>",
+      "patterns": []
+    },
+    "SelectiveScrollingGrid": {
+      "name": "entity.name.tag.xaml.SelectiveScrollingGrid",
+      "begin": "<SelectiveScrollingGrid(\\s|>)",
+      "end": "</SelectiveScrollingGrid>",
+      "patterns": []
+    },
+    "StatusBar": {
+      "name": "entity.name.tag.xaml.StatusBar",
+      "begin": "<StatusBar(\\s|>)",
+      "end": "</StatusBar>",
+      "patterns": []
+    },
+    "StatusBarItem": {
+      "name": "entity.name.tag.xaml.StatusBarItem",
+      "begin": "<StatusBarItem(\\s|>)",
+      "end": "</StatusBarItem>",
+      "patterns": []
+    },
+    "TabPanel": {
+      "name": "entity.name.tag.xaml.TabPanel",
+      "begin": "<TabPanel(\\s|>)",
+      "end": "</TabPanel>",
+      "patterns": []
+    },
+    "Thumb": {
+      "name": "entity.name.tag.xaml.Thumb",
+      "begin": "<Thumb(\\s|>)",
+      "end": "</Thumb>",
+      "patterns": []
+    },
+    "TickBar": {
+      "name": "entity.name.tag.xaml.TickBar",
+      "begin": "<TickBar(\\s|>)",
+      "end": "</TickBar>",
+      "patterns": []
+    },
+    "ToggleButton": {
+      "name": "entity.name.tag.xaml.ToggleButton",
+      "begin": "<ToggleButton(\\s|>)",
+      "end": "</ToggleButton>",
+      "patterns": []
+    },
+    "ToolBarOverflowPanel": {
+      "name": "entity.name.tag.xaml.ToolBarOverflowPanel",
+      "begin": "<ToolBarOverflowPanel(\\s|>)",
+      "end": "</ToolBarOverflowPanel>",
+      "patterns": []
+    },
+    "ToolBarPanel": {
+      "name": "entity.name.tag.xaml.ToolBarPanel",
+      "begin": "<ToolBarPanel(\\s|>)",
+      "end": "</ToolBarPanel>",
+      "patterns": []
+    },
+    "Track": {
+      "name": "entity.name.tag.xaml.Track",
+      "begin": "<Track(\\s|>)",
+      "end": "</Track>",
+      "patterns": []
+    },
+    "UniformGrid": {
+      "name": "entity.name.tag.xaml.UniformGrid",
+      "begin": "<UniformGrid(\\s|>)",
+      "end": "</UniformGrid>",
+      "patterns": []
+    },
+    "Style": {
+      "name": "entity.name.tag.xaml.Style",
+      "begin": "<Style(\\s|>)",
+      "end": "</Style>",
+      "patterns": []
     }
-  ],
-  "repository": {}
+  }
 }
