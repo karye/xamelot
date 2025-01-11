@@ -1,0 +1,42 @@
+{
+  "name": "Xamelot Light Theme",
+  "type": "light",
+  "tokenColors": [
+    {
+      "scope": "entity.name.tag.xaml",
+      "settings": {
+        "foreground": "#800000"
+      }
+    },
+    {
+      "scope": "entity.other.attribute-name.xaml",
+      "settings": {
+        "foreground": "#FF0000"
+      }
+    },
+    {
+      "scope": "string.quoted.double.xaml",
+      "settings": {
+        "foreground": "#0000FF"
+      }
+    },
+    {
+      "scope": "constant.character.escape.xaml",
+      "settings": {
+        "foreground": "#008000"
+      }
+    },
+    {
+      "scope": "punctuation.definition.string.begin.xaml",
+      "settings": {
+        "foreground": "#0000FF"
+      }
+    },
+    {
+      "scope": "punctuation.definition.string.end.xaml",
+      "settings": {
+        "foreground": "#0000FF"
+      }
+    }
+  ]
+}

@@ -216,7 +216,7 @@ export async function parseXSD(filePath: string): Promise<Schema> {
     console.log('Parsed schema:', JSON.stringify(schema, null, 2));
     return schema;
 }
-
+/* 
 export function generateGrammarFromXSD(schema: Schema): any {
     const grammar: {
         scopeName: string;
@@ -239,4 +239,4 @@ export function generateGrammarFromXSD(schema: Schema): any {
     }
 
     return grammar;
-}
+} */

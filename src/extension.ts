@@ -1,15 +1,12 @@
 import * as vscode from 'vscode';
-import { parseXSD, generateGrammarFromXSD } from './xsdparser'; // Funktion för att parsa xsd-filen och generera grammatik
+import * as fs from 'fs';
+import { parseXSD } from './xsdparser'; // Funktion för att parsa xsd-filen
 
 let xamlSchema: any;
 
 export async function activate(context: vscode.ExtensionContext) {
     console.log('Activating extension Xamelot...');
-    const xsdPath = vscode.Uri.file(context.extensionPath + '/syntax/sample.xaml.xsd');
-    const grammarPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.tmLanguage.json');
-    console.log('XSD Path:', xsdPath.fsPath);
-    console.log('Grammar Path:', grammarPath.fsPath);
-
+    
     // Lägg till statusfält
     const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
     statusBarItem.text = 'Xamelot';
@@ -17,28 +14,36 @@ export async function activate(context: vscode.ExtensionContext) {
     statusBarItem.show();
     context.subscriptions.push(statusBarItem);
 
+    // Read paths from configuration
+    const config = vscode.workspace.getConfiguration('xamelot');
+    const xsdPathConfig = config.get<string>('xsdPath');
+    const cachePathConfig = config.get<string>('cachePath') || 'xaml.cache.json';
+
+    if (!xsdPathConfig) {
+        console.error('XSD Path is not defined in the configuration.');
+        return;
+    }
+
+    const xsdPath = vscode.Uri.file(context.asAbsolutePath(xsdPathConfig)).fsPath;
+    const cachePath = vscode.Uri.file(context.asAbsolutePath(cachePathConfig)).fsPath;
+    console.log('XSD Path:', xsdPath);
+    console.log('Cache Path:', cachePath);
+
     // Registrera ett kommando
     context.subscriptions.push(
-        vscode.commands.registerCommand('xamelot.refresh', () => {
+        vscode.commands.registerCommand('xamelot.refresh', async () => {
+            await refreshSchema(xsdPath, cachePath);
             vscode.window.showInformationMessage('Xamelot refreshed!');
         })
     );
 
-    // Läs och parse XSD-filen
+    // Load or parse XSD schema
     try {
-        xamlSchema = await parseXSD(xsdPath.fsPath);
+        xamlSchema = await loadOrParseSchema(xsdPath, cachePath);
         console.log('XAML Schema loaded successfully:', xamlSchema);
     } catch (error) {
-        console.error('Error parsing XSD:', error);
+        console.error('Error loading or parsing XSD:', error);
         return; // Avbryt aktiveringen om parsing misslyckas
-    }
-
-    // Generera tmLanguage-fil
-    try {
-        await createGrammarFile(xamlSchema, grammarPath.fsPath);
-    } catch (error) {
-        console.error('Error creating grammar file:', error);
-        return; // Avbryt aktiveringen om grammar-filen inte kan skapas
     }
 
     // Registrera completion provider
@@ -75,6 +80,35 @@ export async function activate(context: vscode.ExtensionContext) {
     });
 
     console.log('XAML extension is now active!');
+}
+
+async function loadOrParseSchema(xsdPath: string, cachePath: string): Promise<any> {
+    if (fs.existsSync(cachePath)) {
+        const cacheStat = fs.statSync(cachePath);
+        const xsdStat = fs.statSync(xsdPath);
+
+        if (cacheStat.mtime >= xsdStat.mtime) {
+            console.log('Loading schema from cache...');
+            const cachedSchema = fs.readFileSync(cachePath, 'utf-8');
+            return JSON.parse(cachedSchema);
+        }
+    }
+
+    console.log('Parsing XSD file...');
+    const schema = await parseXSD(xsdPath);
+    fs.writeFileSync(cachePath, JSON.stringify(schema, null, 2));
+    return schema;
+}
+
+async function refreshSchema(xsdPath: string, cachePath: string) {
+    try {
+        const schema = await parseXSD(xsdPath);
+        fs.writeFileSync(cachePath, JSON.stringify(schema, null, 2));
+        xamlSchema = schema;
+        console.log('Schema refreshed.');
+    } catch (error) {
+        console.error('Error refreshing schema:', error);
+    }
 }
 
 class XamlCompletionProvider implements vscode.CompletionItemProvider {
@@ -146,14 +180,6 @@ class XamlCompletionProvider implements vscode.CompletionItemProvider {
         }
         return [];
     }
-}
-
-async function createGrammarFile(schema: any, outputPath: string) {
-    console.log('Creating grammar file...');
-    const grammar = generateGrammarFromXSD(schema);
-    const fs = require('fs');
-    fs.writeFileSync(outputPath, JSON.stringify(grammar, null, 2));
-    console.log('Grammar file created at:', outputPath);
 }
 
 export function deactivate() {

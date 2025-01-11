@@ -8,15 +8,14 @@
     },
     "categories": [
         "Programming Languages",
-        "Linters"
+        "Linters",
+        "Themes"
     ],
     "main": "./out/extension.js",
     "icon": "images/xml.png",
-
     "activationEvents": [
         "onLanguage:xaml"
     ],
-
     "contributes": {
         "commands": [
             {
@@ -41,7 +40,35 @@
                 "scopeName": "source.xaml",
                 "path": "./syntax/xaml.tmLanguage.json"
             }
-        ]
+        ],
+        "themes": [
+            {
+                "label": "Xamelot Theme",
+                "uiTheme": "vs",
+                "path": "./syntax/xaml.theme.json"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Xamelot Configuration",
+            "properties": {
+                "xamelot.xsdPath": {
+                    "type": "string",
+                    "default": "./syntax/sample.xaml.xsd",
+                    "description": "Path to the XSD file."
+                },
+                "xamelot.grammarPath": {
+                    "type": "string",
+                    "default": "./syntax/xaml.tmLanguage.json",
+                    "description": "Path to the grammar file."
+                },
+                "xamelot.cachePath": {
+                    "type": "string",
+                    "default": "./syntax/xaml.cache.json",
+                    "description": "Path to the cache file."
+                }
+            }
+        }
     },
     "keywords": [
         "xaml",

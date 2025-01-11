@@ -1,0 +1,60 @@
+{
+  "elements": {
+    "Button": {
+      "attributes": {
+        "IsDefault": "Gets or sets a value that indicates whether a \"T:System.Windows.Controls.Button\" is the default button. A user invokes the default button by pressing the ENTER key.",
+        "IsCancel": "Gets or sets a value that indicates whether a \"T:System.Windows.Controls.Button\" is a Cancel button. A user can activate the Cancel button by pressing the ESC key.",
+        "IsDefaulted": "Gets a value that indicates whether a \"T:System.Windows.Controls.Button\" is the button that is activated when a user presses ENTER.",
+        "IsPressed": "",
+        "Command": "",
+        "CommandParameter": "",
+        "CommandTarget": "",
+        "ClickMode": "",
+        "Content": "",
+        "HasContent": "",
+        "ContentTemplate": "",
+        "ContentTemplateSelector": "",
+        "ContentStringFormat": "",
+        "BorderBrush": "",
+        "BorderThickness": "",
+        "Background": "",
+        "Foreground": "",
+        "FontFamily": "",
+        "FontSize": "",
+        "FontStretch": "",
+        "FontStyle": "",
+        "FontWeight": "",
+        "HorizontalContentAlignment": "",
+        "VerticalContentAlignment": "",
+        "TabIndex": "",
+        "IsTabStop": "",
+        "Padding": "",
+        "Template": "",
+        "Uid": "Gets or sets the unique identifier (for localization) for this element. This is a dependency property.",
+        "Visibility": "Gets or sets the user interface (UI) visibility of this element. This is a dependency property.",
+        "ClipToBounds": "Gets or sets a value indicating whether to clip the content of this element (or content coming from the child elements of this element) to fit into the size of the containing element. This is a dependency property.",
+        "Clip": "Gets or sets the geometry used to define the outline of the contents of an element. This is a dependency property.",
+        "Click": "Occurs when a button is clicked.",
+        "DependencyObjectType": "",
+        "IsSealed": "",
+        "Dispatcher": ""
+      },
+      "childElements": []
+    }
+  },
+  "complexTypes": {
+    "FrameworkElement": {
+      "attributes": {
+        "Uid": "Gets or sets the unique identifier (for localization) for this element. This is a dependency property.",
+        "Visibility": "Gets or sets the user interface (UI) visibility of this element. This is a dependency property.",
+        "ClipToBounds": "Gets or sets a value indicating whether to clip the content of this element (or content coming from the child elements of this element) to fit into the size of the containing element. This is a dependency property.",
+        "Clip": "Gets or sets the geometry used to define the outline of the contents of an element. This is a dependency property.",
+        "Click": "Occurs when a button is clicked.",
+        "DependencyObjectType": "",
+        "IsSealed": "",
+        "Dispatcher": ""
+      },
+      "childElements": []
+    }
+  }
+}
