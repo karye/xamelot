@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WpfXamlSchema" targetNamespace="http://schemas.microsoft.com/winfx/2006/xaml/presentation" elementFormDefault="qualified" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:noNamespaceSchemaLocation="https://www.w3.org/2001/XMLSchema.xsd">
+  <xs:simpleType name="text">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:complexType name="FrameworkElement" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="controls" />
+      <xs:any maxOccurs="unbounded" processContents="lax" />
+    </xs:choice>
+    <xs:attribute name="Uid" type="text">
+      <xs:annotation>
+        <xs:documentation>Gets or sets the unique identifier (for localization) for this element. This is a dependency property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Visibility" type="text">
+      <xs:annotation>
+        <xs:documentation>Gets or sets the user interface (UI) visibility of this element. This is a dependency property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ClipToBounds" type="text">
+      <xs:annotation>
+        <xs:documentation>Gets or sets a value indicating whether to clip the content of this element (or content coming from the child elements of this element) to fit into the size of the containing element. This is a dependency property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Clip" type="text">
+      <xs:annotation>
+        <xs:documentation>Gets or sets the geometry used to define the outline of the contents of an element. This is a dependency property.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Click" type="text">
+      <xs:annotation>
+        <xs:documentation>Occurs when a button is clicked.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="DependencyObjectType" type="text" />
+    <xs:attribute name="IsSealed" type="text" />
+    <xs:attribute name="Dispatcher" type="text" />
+    <xs:anyAttribute namespace="##local http://schemas.microsoft.com/winfx/2006/xaml http://schemas.openxmlformats.org/markup-compatibility/2006" processContents="skip" />
+  </xs:complexType>
+  <xs:group name="controls">
+    <xs:choice>
+      <xs:element ref="Button" />
+    </xs:choice>
+  </xs:group>
+  <xs:element name="Button">
+    <xs:annotation>
+      <xs:documentation>Represents a Windows button control, which reacts to the "E:System.Windows.Controls.Primitives.ButtonBase.Click" event.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:complexContent>
+        <xs:extension base="FrameworkElement">
+          <xs:attribute name="IsDefault" type="text">
+            <xs:annotation>
+              <xs:documentation>Gets or sets a value that indicates whether a "T:System.Windows.Controls.Button" is the default button. A user invokes the default button by pressing the ENTER key.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="IsCancel" type="text">
+            <xs:annotation>
+              <xs:documentation>Gets or sets a value that indicates whether a "T:System.Windows.Controls.Button" is a Cancel button. A user can activate the Cancel button by pressing the ESC key.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="IsDefaulted" type="text">
+            <xs:annotation>
+              <xs:documentation>Gets a value that indicates whether a "T:System.Windows.Controls.Button" is the button that is activated when a user presses ENTER.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="IsPressed" type="text" />
+          <xs:attribute name="Command" type="text" />
+          <xs:attribute name="CommandParameter" type="text" />
+          <xs:attribute name="CommandTarget" type="text" />
+          <xs:attribute name="ClickMode" type="text" />
+          <xs:attribute name="Content" type="text" />
+          <xs:attribute name="HasContent" type="text" />
+          <xs:attribute name="ContentTemplate" type="text" />
+          <xs:attribute name="ContentTemplateSelector" type="text" />
+          <xs:attribute name="ContentStringFormat" type="text" />
+          <xs:attribute name="BorderBrush" type="text" />
+          <xs:attribute name="BorderThickness" type="text" />
+          <xs:attribute name="Background" type="text" />
+          <xs:attribute name="Foreground" type="text" />
+          <xs:attribute name="FontFamily" type="text" />
+          <xs:attribute name="FontSize" type="text" />
+          <xs:attribute name="FontStretch" type="text" />
+          <xs:attribute name="FontStyle" type="text" />
+          <xs:attribute name="FontWeight" type="text" />
+          <xs:attribute name="HorizontalContentAlignment" type="text" />
+          <xs:attribute name="VerticalContentAlignment" type="text" />
+          <xs:attribute name="TabIndex" type="text" />
+          <xs:attribute name="IsTabStop" type="text" />
+          <xs:attribute name="Padding" type="text" />
+          <xs:attribute name="Template" type="text" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

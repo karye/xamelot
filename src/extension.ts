@@ -5,7 +5,7 @@ let xamlSchema: any;
 
 export async function activate(context: vscode.ExtensionContext) {
     console.log('Activating extension Xamelot...');
-    const xsdPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.xsd');
+    const xsdPath = vscode.Uri.file(context.extensionPath + '/syntax/sample.xaml.xsd');
     const grammarPath = vscode.Uri.file(context.extensionPath + '/syntax/xaml.tmLanguage.json');
     console.log('XSD Path:', xsdPath.fsPath);
     console.log('Grammar Path:', grammarPath.fsPath);
@@ -60,11 +60,15 @@ export async function activate(context: vscode.ExtensionContext) {
                 if (tagNameMatch) {
                     const tagName = tagNameMatch[1];
                     const closingTag = `</${tagName}>`;
-                    const edit = new vscode.WorkspaceEdit();
-                    const position = new vscode.Position(change.range.start.line, change.range.end.character);
-                    edit.insert(event.document.uri, position, closingTag);
-                    vscode.workspace.applyEdit(edit);
-                    console.log('Inserted closing tag:', closingTag);
+                    const position = new vscode.Position(change.range.start.line, change.range.end.character + 1);
+                    const nextChar = event.document.getText(new vscode.Range(position, position.translate(0, closingTag.length)));
+
+                    if (nextChar !== closingTag) {
+                        const edit = new vscode.WorkspaceEdit();
+                        edit.insert(event.document.uri, position, closingTag);
+                        vscode.workspace.applyEdit(edit);
+                        console.log('Inserted closing tag:', closingTag);
+                    }
                 }
             }
         }
@@ -80,15 +84,24 @@ class XamlCompletionProvider implements vscode.CompletionItemProvider {
         const line = document.lineAt(position).text.substring(0, position.character).trim();
         console.log('Providing completion items for line:', line);
 
-        if (line.startsWith('<')) {
+        const tagMatch = this.isInsideStartTag(line, position.character);
+        if (tagMatch) {
+            console.log('Getting attributes...', tagMatch[1]);
+            return this.getAttributes(tagMatch[1]);
+        } else {
+            console.log('Getting elements...');
             return this.getElements();
-        } else if (line.match(/<\w+\s+\w*$/)) {
-            return this.getAttributes(line);
-        } else if (line.match(/<\w+\s+\w+=".*$/)) {
-            return this.getClosingTag(line);
         }
+    }
 
-        return undefined;
+    private isInsideStartTag(line: string, character: number): RegExpMatchArray | null {
+        console.log('Is inside start tag...');
+        const openTagIndex = line.lastIndexOf('<');
+        const closeTagIndex = line.lastIndexOf('>');
+        if (openTagIndex !== -1 && (closeTagIndex === -1 || openTagIndex > closeTagIndex)) {
+            return line.match(/<(\w+)/);
+        }
+        return null;
     }
 
     private getElements() {
@@ -104,19 +117,26 @@ class XamlCompletionProvider implements vscode.CompletionItemProvider {
         return items;
     }
 
-    private getAttributes(line: string) {
-        const elementName = line.match(/<(\w+)/)?.[1];
+    private getAttributes(elementName: string) {
         if (!elementName) {
-            console.warn('No element name found in line:', line);
+            console.warn('No element name provided');
             return [];
         }
 
         const attributes = this.schema.elements[elementName]?.attributes || {};
+        console.log('Attributes for element:', attributes);
+
         return Object.keys(attributes).map(attr => {
             const item = new vscode.CompletionItem(attr, vscode.CompletionItemKind.Property);
             item.documentation = attributes[attr];
+            item.insertText = new vscode.SnippetString(`${attr}=""$1`);
             return item;
         });
+    }
+
+    private getAttributeValues(line: string) {
+        // Implement logic to provide attribute values if needed
+        return [];
     }
 
     private getClosingTag(line: string) {
