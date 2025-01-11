@@ -54,7 +54,7 @@
             "properties": {
                 "xamelot.xsdPath": {
                     "type": "string",
-                    "default": "./syntax/sample.xaml.xsd",
+                    "default": "./syntax/xaml.xsd",
                     "description": "Path to the XSD file."
                 },
                 "xamelot.grammarPath": {
