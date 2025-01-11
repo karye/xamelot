@@ -26,26 +26,8 @@
         "languages": [
             {
                 "id": "xaml",
-                "extensions": [
-                    ".xaml"
-                ],
-                "aliases": [
-                    "XAML"
-                ]
-            }
-        ],
-        "grammars": [
-            {
-                "language": "xaml",
-                "scopeName": "source.xaml",
-                "path": "./syntax/xaml.tmLanguage.json"
-            }
-        ],
-        "themes": [
-            {
-                "label": "Xamelot Theme",
-                "uiTheme": "vs",
-                "path": "./syntax/xaml.theme.json"
+                "aliases": ["XAML", "xaml"],
+                "extensions": [".xaml", "xml"]
             }
         ],
         "configuration": {
@@ -56,11 +38,6 @@
                     "type": "string",
                     "default": "./syntax/xaml.xsd",
                     "description": "Path to the XSD file."
-                },
-                "xamelot.grammarPath": {
-                    "type": "string",
-                    "default": "./syntax/xaml.tmLanguage.json",
-                    "description": "Path to the grammar file."
                 },
                 "xamelot.cachePath": {
                     "type": "string",
